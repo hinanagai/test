@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lookbook | Hina Nagai</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Syne:wght@700;800&family=Oswald:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #f0f0f0;
+            --font-head: 'Syne', sans-serif;
+            --font-hero: 'Oswald', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-head);
+            overflow: hidden; /* PCは横スクロール */
+            height: 100vh;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        
+        /* 画像の基本設定：高さを指定し、幅は自動（アスペクト比維持） */
+        img { display: block; height: 100%; width: auto; object-fit: cover; }
+
+        /* カーソル */
+        .cursor-dot, .cursor-outline {
+            position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
+            border-radius: 50%; z-index: 9999; pointer-events: none;
+        }
+        .cursor-dot { width: 8px; height: 8px; background-color: white; }
+        .cursor-outline {
+            width: 40px; height: 40px; border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+        body.hovered .cursor-outline {
+            width: 80px; height: 80px; background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(2px); border-color: transparent;
+        }
+
+        header {
+            height: 100px; padding: 0 5%; display: flex; justify-content: space-between; align-items: center;
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 100; mix-blend-mode: difference;
+        }
+        .brand { font-family: var(--font-head); font-weight: 500; font-size: 1.5rem; text-transform: uppercase; }
+        .back-link { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; }
+
+        /* --- 横並びコンテナ --- */
+        .horizontal-strip {
+            display: flex;
+            align-items: center; /* 上下中央揃え */
+            height: 100vh;
+            padding-left: 1%; /* 最初の余白 */
+            padding-right: 10%;
+            gap: 60px; /* 画像ごとの隙間 */
+            
+            overflow-x: auto; /* 横スクロール許可 */
+            white-space: nowrap;
+        }
+        /* スクロールバー非表示 */
+        .horizontal-strip::-webkit-scrollbar { display: none; }
+
+        /* タイトルエリア */
+        .strip-title {
+            flex-shrink: 0;
+            margin-right: 60px;
+        }
+        .strip-title h1 { font-family: var(--font-hero); font-size: 5rem; text-transform: uppercase; line-height: 0.9; }
+        
+        /* 画像ラッパー */
+        .img-item {
+            flex-shrink: 0;
+            height: 70vh; /* 画像の高さ（画面の70%） */
+            transition: transform 0.3s;
+        }
+        .img-item:hover {
+            transform: scale(1.02); /* ホバーで少し大きく */
+            opacity: 1;
+        }
+        .img-item img {
+            /* 画像の角を少し丸めたい場合はここ */
+            /* border-radius: 4px; */
+        }
+
+        /* スマホ対応 */
+        @media (max-width: 768px) {
+            body { overflow: auto; height: auto; }
+            .horizontal-strip { 
+                flex-direction: column; 
+                height: auto; 
+                padding: 150px 5% 100px; 
+                gap: 60px; 
+                align-items: center;
+            }
+            .strip-title { margin-right: 0; margin-bottom: 20px; text-align: center; }
+            .strip-title h1 { font-size: 3.5rem; }
+            
+            /* スマホでは画像を幅いっぱいに */
+            .img-item { width: 100%; height: auto; }
+            .img-item img { width: 100%; height: auto; }
+            
+            * { cursor: auto !important; }
+            .cursor-dot, .cursor-outline { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <header>
+        <a href="fashion.html" class="brand">ENFOLD</a>
+        <a href="fashion.html" class="back-link">Close</a>
+    </header>
+
+    <div class="horizontal-strip">
+        
+        <div class="strip-title">
+            <h1></h1>
+        </div>
+
+        <!-- 
+            高さ(70vh)に合わせて横幅は自動で決まります。
+            縦長の写真も横長の写真も、高さが揃って綺麗に並びます。
+        -->
+
+
+        <div class="img-item">
+            <img src="enfold/photo15.jpg" alt="">
+        </div>
+
+        <div class="img-item">
+            <img src="enfold/photo32.jpg" alt="">
+        </div>
+
+        <div class="img-item">
+            <img src="enfold/photo19.jpg" alt="">
+        </div>
+
+         <div class="img-item">
+            <img src="enfold/photo3.jpg" alt="">
+        </div>
+
+        <div class="img-item">
+            <img src="enfold/019.jpg" alt="">
+        </div>
+
+         <div class="img-item">
+            <img src="enfold/020.jpg" alt="">
+        </div>
+
+           <div class="img-item">
+            <img src="enfold/photo29-5.jpg" alt="">
+        </div>
+
+          <div class="img-item">
+            <img src="enfold/photo58.jpg" alt="">
+        </div>
+
+         <div class="img-item">
+            <img src="enfold/photo57.jpg" alt="">
+        </div>
+  
+         <div class="img-item">
+            <img src="enfold/photo61.jpg" alt="">
+        </div>
+
+         <div class="img-item">
+            <img src="enfold/16.jpg" alt="">
+        </div>
+
+         <div class="img-item">
+            <img src="enfold/022.jpg" alt="">
+        </div>
+
+        
+
+        
+       
+
+    </div>
+
+    <script>
+        const dot = document.querySelector('.cursor-dot');
+        const outline = document.querySelector('.cursor-outline');
+        window.addEventListener('mousemove', e => {
+            if(window.innerWidth > 768) {
+                dot.style.left = e.clientX+'px';
+                dot.style.top = e.clientY+'px';
+                outline.animate({left:e.clientX+'px', top:e.clientY+'px'}, {duration:500, fill:"forwards"});
+            }
+        });
+        
+        // 横スクロール制御（制限なし・スムーズ）
+        const container = document.querySelector('.horizontal-strip');
+        container.addEventListener('wheel', e => {
+            if(window.innerWidth > 768) {
+                e.preventDefault();
+                // 単純にマウスホイールの縦回転を横移動に変換するだけ
+                container.scrollLeft += e.deltaY;
+            }
+        });
+
+        document.querySelectorAll('a').forEach(l => {
+            l.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
+            l.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
+        });
+    </script>
+</body>
+</html>
